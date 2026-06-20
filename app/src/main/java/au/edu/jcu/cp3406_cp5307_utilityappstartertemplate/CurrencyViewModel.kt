@@ -7,12 +7,10 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-class CurrencyViewModel(
-    private val repository: CurrencyRepository
-) : ViewModel() {
+class CurrencyViewModel : ViewModel() {
+    private val repository = CurrencyRepository()
     var result by mutableStateOf("0.00")
         private set
-
     var isLoading by mutableStateOf(false)
         private set
 

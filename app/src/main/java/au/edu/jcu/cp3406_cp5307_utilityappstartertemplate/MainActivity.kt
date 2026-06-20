@@ -29,6 +29,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.ui.theme.CP3406_CP5603UtilityAppStarterTemplateTheme
 
 class MainActivity : ComponentActivity() {
@@ -84,6 +85,8 @@ fun UtilityApp() {
 
 @Composable
 fun UtilityScreen() {
+    val currencyViewModel: CurrencyViewModel = viewModel()
+
     var amount by remember { mutableStateOf("") }
 
     val currencies = listOf(
@@ -97,8 +100,6 @@ fun UtilityScreen() {
 
     var fromCurrency by remember { mutableStateOf("USD") }
     var toCurrency by remember { mutableStateOf("SGD") }
-
-    var result by remember { mutableStateOf("0.00") }
 
     Column(
         modifier = Modifier
@@ -127,14 +128,18 @@ fun UtilityScreen() {
 
         Button(
             onClick = {
-                result = amount
+                currencyViewModel.convert(
+                    amount.toDoubleOrNull() ?: 0.0,
+                    fromCurrency,
+                    toCurrency
+                )
             }
         ) {
             Text("Convert")
         }
 
         Text(
-            "Result: $result",
+            "Result: ${currencyViewModel.result}",
             style = MaterialTheme.typography.headlineSmall
         )
     }
