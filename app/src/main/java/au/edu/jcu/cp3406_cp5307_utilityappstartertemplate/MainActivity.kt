@@ -85,6 +85,19 @@ fun UtilityApp() {
 @Composable
 fun UtilityScreen() {
     var amount by remember { mutableStateOf("") }
+
+    val currencies = listOf(
+        "USD",
+        "EUR",
+        "GBP",
+        "AUD",
+        "SGD",
+        "JPY"
+    )
+
+    var fromCurrency by remember { mutableStateOf("USD") }
+    var toCurrency by remember { mutableStateOf("SGD") }
+
     var result by remember { mutableStateOf("0.00") }
 
     Column(
@@ -102,6 +115,14 @@ fun UtilityScreen() {
             value = amount,
             onValueChange = { amount = it },
             label = { Text("Amount") }
+        )
+
+        Text(
+            text = "From Currency: $fromCurrency"
+        )
+
+        Text(
+            text= "To Currency: $toCurrency"
         )
 
         Button(
