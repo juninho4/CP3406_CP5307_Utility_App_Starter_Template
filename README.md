@@ -1,4 +1,4 @@
-# Utility App Starter – CP3406 / CP5307
+# Currency Converter App – CP3406 / CP5307
 
 This is a basic Android app template for **Assessment 1: Utility App** in CP3406/CP5603..  
 It provides the structure for a simple tabular UI using **Jetpack Compose** and **Material Design 3**.
@@ -9,24 +9,60 @@ It provides the structure for a simple tabular UI using **Jetpack Compose** and 
 
 ### How to Run
 1. Clone or download this repo  
-2. Open in Android Studio  
-3. Run on an emulator or physical device (API 26+ recommended)  
+2. Open the project in Android Studio
+3. Add your API key in `RetroFitInstance.kt` (if required) 
+4. Run the app on an emulator or physical device (API 26+ recommended)  
 
 ---
 
-## Composables
+## App Features
 
-### UtilityApp()
-- Contains the screen layout using a Scaffold
-- Toggles content between Utility and Settings
+### Utility Screen (Currency Converter)
+- Convert between multiple currencies using live exchange rates
+- Input amount using a text field
+- Select base and target currencies
+- Displays the converted result instantly
+- Fetches real-time exchange rates using a REST API
 
-### UtilityScreen()
-- Displays a simple counter (replace with your utility logic)  
-- Includes a button to increment the counter
+### Settings Screen
+- Placeholder for user preferences
+- Can be extended to include:
+  - Default currency selection
+  - Decimal precision settings
+  - Theme configuration
 
-### SettingsScreen()
-- Placeholder for user preferences or configuration  
-- Can be extended to modify main screen behavior (e.g., theme, units, limits)  
+---
+
+## Key Architecture Components
+
+| Layer | Description |
+|------|-------------|
+| UI (Jetpack Compose) | Displays screens and handles user interaction |
+| ViewModel | Manages UI state and business logic |
+| Repository | Handles data operations and API calls |
+| Retrofit | Fetches live currency exchange rates from API |
+| Coroutines | Handles asynchronous network requests |
+
+---
+
+## API Used
+
+This project uses the **ExchangeRate API** for live currency conversion data.
+
+https://www.exchangerate-api.com/
+
+Example endpoint:
+
+---
+
+## Technologies Used
+- Kotlin
+- Jetpack Compose
+- Material Design 3
+- Retrofit
+- Gson Converter
+- Coroutines
+- ViewModel (Android Architecture Components)
 
 ---
 
@@ -37,19 +73,18 @@ It provides the structure for a simple tabular UI using **Jetpack Compose** and 
 | 1    | Kotlin + Android Studio         | MainActivity.kt |
 | 2    | Jetpack Compose Layouts         | UtilityApp(), UtilityScreen(), SettingsScreen()   |
 | 3    | Material Design 3               | CP3406_CP5603UtilityAppStarterTemplateTheme, MaterialTheme.typography |
-| 4    | ViewModel | Not included in starter          |
-| 5    | Retrofit  | Not included in starter          |
+| 4    | ViewModel + Repository Pattern  | CurrencyViewModel + CurrencyRepository |
+| 5    | Retrofit API Integration        | Currency API service + networking |
 
 ---
 
 ## Suggested Extensions
-- Replace counter with a real utility (e.g., hydration tracker, timer)  
+- Replace counter with a real utility
 - Add a ViewModel for state management  
 - Use SharedPreferences or DataStore to persist settings  
-- Add a simple API call using Retrofit (e.g., fetch weather or quotes)  
+- Add a simple API call using Retrofit
 
 ---
 
 ## 📚 License
-This template is provided for educational use in CP3406.  
-Feel free to modify and extend it for your assessment.
+This project is for educational purposes as part of CP3406/CP5603 assessment submission
