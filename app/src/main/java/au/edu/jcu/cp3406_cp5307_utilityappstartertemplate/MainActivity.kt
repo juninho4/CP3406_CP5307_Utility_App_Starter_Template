@@ -22,7 +22,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -88,15 +87,6 @@ fun UtilityScreen() {
     val currencyViewModel: CurrencyViewModel = viewModel()
 
     var amount by remember { mutableStateOf("") }
-
-    val currencies = listOf(
-        "USD",
-        "EUR",
-        "GBP",
-        "AUD",
-        "SGD",
-        "JPY"
-    )
 
     var fromCurrency by remember { mutableStateOf("USD") }
     var toCurrency by remember { mutableStateOf("SGD") }
